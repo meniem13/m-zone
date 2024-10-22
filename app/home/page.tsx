@@ -1,7 +1,6 @@
 import React from "react";
 
 const page = () => {
-  const wholeMessages: any[] = [];
   return (
     <div className="h-screen w-screen flex  ">
       {/* hna hybqa sidebar ely feh elnas w model 35% ashan hybqa fe profile shit we can make it modal */}
@@ -51,7 +50,7 @@ const page = () => {
           </h1>
         </div>
         {/* hna hybqa body bta3 box */}
-        {wholeMessages.length > 0 ? (
+        {/* {wholeMessages.length > 0 ? (
           <div className="flex flex-col space-y-2 mb-10">
             {wholeMessages.map((item, index) => (
               <div
@@ -70,7 +69,7 @@ const page = () => {
           <p className="text-center text-white mt-10">
             type something to start chatting
           </p>
-        )}
+        )} */}
         <div className="absolute  w-full  py-1 bg-cyan-800 items-center bottom-0 flex justify-center -slate-400  ">
           <input
             type="text"
