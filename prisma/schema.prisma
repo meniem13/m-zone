@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String    @id @default(uuid()) // Automatically generate a UUID for each user
+  name             String    
+  email            String
+  password         String
+  bio              String    @default("hello there i am usign m-zone")
+  photoUrl         String    @default("null")
+  sentMessages     Message[] @relation("MessageSender") // Added relation field for sent messages
+  receivedMessages Message[] @relation("MessageRecipient")
+}
+
+model Message {
+  id        String @id @default(uuid()) // Unique identifier for each message
+  actualMsg String // The actual message content
+  tStamp    String // Timestamp of the message
+
+  senId String // ID of the sender, references User
+  recId String // ID of the receiver, references User
+
+  sender    User @relation("MessageSender", fields: [senId], references: [id]) // Relation to User for sender
+  recipient User @relation("MessageRecipient", fields: [recId], references: [id]) // Relation to User for recipient
+}
+
